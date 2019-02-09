@@ -1,0 +1,17 @@
+<div *ngIf="(loading$ | async); else componentView">
+  <div class="loading">Loading...</div>
+</div>
+
+<ng-template #componentView>
+  <div class="pagination" *ngIf="max$ | async">
+    <span class="paginate-previous" *ngIf="offset !== 0" (click)="paginatePrevious();"><i class="material-icons">chevron_left</i></span>
+    <span class="range-start">{{count * offset + 1}}</span>
+    <span class="range-end">{{count + (count * offset)}}</span>
+    <span class="total-count">{{max$ | async}}</span>
+    <span class="paginate-next" *ngIf="(offset+1)*count < max" (click)="paginateNext();"><i class="material-icons">chevron_right</i></span>
+  </div>
+
+  <ul>
+    <li *ngFor="let artist of (artists$ | async)">{{artist.name}}</li>
+  </ul>
+</ng-template>

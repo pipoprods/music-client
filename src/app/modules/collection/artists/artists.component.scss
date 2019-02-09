@@ -1,0 +1,51 @@
+:host {
+  div.pagination {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    text-align: right;
+    font-weight: bold;
+
+    span.range-end::before {
+      content: ' - ';
+    }
+
+    span.total-count::before {
+      content: ' / ';
+    }
+
+    span.paginate-previous, span.paginate-next {
+      cursor: pointer;
+    }
+
+    span.paginate-previous {
+      margin-right: 1em;
+    }
+
+    span.paginate-next {
+      margin-left: 1em;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1em;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+
+    li {
+      padding: 1em;
+      font-size: 120%;
+      border-bottom: 1px solid #dedede;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: #efefef;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+  }
+}
