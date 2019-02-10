@@ -11,7 +11,9 @@ import {
     LoadArtistsAction,
     LoadedArtistsAction,
     LoadedArtistCountAction,
-    LoadArtistCountAction
+    LoadArtistCountAction,
+    LoadAlbumsAction,
+    LoadedAlbumsAction,
   } from '@stores/collection/actions';
 
 import { CollectionService } from '@services/collection.service';
@@ -28,6 +30,12 @@ export class CollectionEffects {
   loadedArtistCount$ = this.actions$.ofType<LoadArtistCountAction>(CollectionActionTypes.LoadArtistCount).pipe(
     switchMap(() => this.collectionService.getArtistCount()),
     map(count => new LoadedArtistCountAction(count))
+  );
+
+  @Effect()
+  loadAlbums$ = this.actions$.ofType<LoadAlbumsAction>(CollectionActionTypes.LoadAlbums).pipe(
+    switchMap((action) => this.collectionService.getAlbums(action.id)),
+    map(albums => new LoadedAlbumsAction(albums))
   );
 
   constructor(

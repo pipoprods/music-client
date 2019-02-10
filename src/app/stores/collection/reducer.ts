@@ -26,6 +26,19 @@ export function reducer(state = initialState, action: CollectionAction): Collect
         artistCount: action.count
       };
 
+    case CollectionActionTypes.LoadAlbums:
+      return {
+        ...state,
+        loading: true
+      };
+
+    case CollectionActionTypes.LoadedAlbums:
+      return {
+        ...state,
+        loading: false,
+        albums: action.albums
+      };
+
     default:
       return state;
   }
@@ -36,3 +49,4 @@ export const getCollectionState = createFeatureSelector<CollectionState>('collec
 export const loading = createSelector(getCollectionState, state => state.loading);
 export const artists = createSelector(getCollectionState, state => state.artists);
 export const artistCount = createSelector(getCollectionState, state => state.artistCount);
+export const albums = createSelector(getCollectionState, state => state.albums);

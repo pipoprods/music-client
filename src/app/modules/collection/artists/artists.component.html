@@ -12,6 +12,6 @@
   </div>
 
   <ul>
-    <li *ngFor="let artist of (artists$ | async)">{{artist.name}}</li>
+    <li *ngFor="let artist of (artists$ | async)" (click)="showArtistAlbums(artist.id);">{{artist.name}}</li>
   </ul>
 </ng-template>

@@ -5,7 +5,9 @@ import { Observable } from 'rxjs/Observable';
 
 // Specific
 import { environment } from '@root/environments/environment';
+
 import { Artist } from '@models/artist';
+import { Album } from '@models/album';
 
 @Injectable()
 export class CollectionService {
@@ -23,5 +25,12 @@ export class CollectionService {
 
   public getArtistCount(): Observable<number> {
     return this.http.get<number>(`${environment.api}/artist/count`);
+  }
+
+  public getAlbums(id: string, count?: number, offset?: number): Observable<Album[]> {
+    return this.http.get<Album[]>(
+        `${environment.api}/artist/${encodeURIComponent(id)}/albums`,
+        { params: (count !== undefined && offset !== undefined) ? { count: count.toString(), offset: offset.toString() } : undefined }
+      );
   }
 }

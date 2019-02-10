@@ -10,6 +10,7 @@ import { CollectionService } from '@services/collection.service';
 import { reducer } from '@stores/collection/reducer';
 import { CollectionEffects } from '@stores/collection/effects';
 import { ArtistsComponent } from './artists/artists.component';
+import { AlbumsComponent } from './albums/albums.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ export class CollectionStoreModule { }
     CollectionStoreModule
   ],
   declarations: [
-    ArtistsComponent
+    ArtistsComponent,
+    AlbumsComponent
   ],
   providers: [
     CollectionService

@@ -41,6 +41,7 @@ export class ArtistsComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.offset = (Number(this.route.snapshot.paramMap.get('pagenr')) || 1) - 1;
     this.store.dispatch(new LoadArtistCountAction());
     this.fetchData((Number(this.route.snapshot.paramMap.get('pagenr')) || 1) - 1);
   }
@@ -61,5 +62,9 @@ export class ArtistsComponent implements OnInit {
     if ((this.offset + 1) * this.count < this.max) {
       this.fetchData(this.offset + 1);
     }
+  }
+
+  public showArtistAlbums(id: string): void {
+    this.router.navigate(['collection', 'artist', id]);
   }
 }

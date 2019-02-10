@@ -1,0 +1,39 @@
+:host {
+  h2 {
+    text-align: center;
+  }
+
+  div.navigation {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1em;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+
+    li {
+      padding: 1em;
+      font-size: 120%;
+      border-bottom: 1px solid #dedede;
+      cursor: pointer;
+
+      span.year:not(:empty)::after {
+        content: ' - ';
+      }
+    }
+
+    li:hover {
+      background-color: #efefef;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+  }
+}

@@ -3,12 +3,15 @@ import { Action } from '@ngrx/store';
 
 // Specific
 import { Artist } from '@models/artist';
+import { Album } from '@models/album';
 
 export enum CollectionActionTypes {
   LoadArtists = 'Load artists',
   LoadedArtists = 'Loaded artists',
   LoadArtistCount = 'Load artist count',
   LoadedArtistCount = 'Loaded artist count',
+  LoadAlbums = 'Load albums',
+  LoadedAlbums = 'Loaded albums',
 }
 
 export class LoadArtistsAction implements Action {
@@ -30,8 +33,20 @@ export class LoadedArtistCountAction implements Action {
   constructor(public readonly count: number) {}
 }
 
+export class LoadAlbumsAction implements Action {
+  readonly type = CollectionActionTypes.LoadAlbums;
+  constructor(public readonly id: string) {}
+}
+
+export class LoadedAlbumsAction implements Action {
+  readonly type = CollectionActionTypes.LoadedAlbums;
+  constructor(public readonly albums: Album[]) {}
+}
+
 export type CollectionAction = LoadArtistsAction
   | LoadedArtistsAction
   | LoadArtistCountAction
   | LoadedArtistCountAction
+  | LoadAlbumsAction
+  | LoadedAlbumsAction
   ;

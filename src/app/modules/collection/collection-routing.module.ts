@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 // Specific
 import { ArtistsComponent } from './artists/artists.component';
+import { AlbumsComponent } from './albums/albums.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { ArtistsComponent } from './artists/artists.component';
       { path: '', children: [
         { path: '', component: ArtistsComponent },
         { path: 'artist/page/:pagenr', component: ArtistsComponent },
+        { path: 'artist/:id', component: AlbumsComponent },
       ]}
     ])
   ],

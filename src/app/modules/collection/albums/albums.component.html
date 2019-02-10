@@ -1,0 +1,11 @@
+<div *ngIf="(loading$ | async); else componentView">
+  <div class="loading">Loading...</div>
+</div>
+
+<ng-template #componentView>
+  <h2>{{artist}}</h2>
+  <div class="navigation" (click)="back();"><span class="button"><i class="material-icons">arrow_back</i>Back</span></div>
+  <ul>
+    <li *ngFor="let album of albums"><span class="year">{{album.year}}</span><span class="name">{{album.name}}</span></li>
+  </ul>
+</ng-template>
