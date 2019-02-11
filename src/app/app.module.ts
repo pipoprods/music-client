@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule, ActionReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // Specific
 import { environment } from '@root/environments/environment';
@@ -33,6 +34,7 @@ export const metaReducers = !environment.production ? [debug, storeFreeze] : [];
     RouterModule.forRoot([]),
     StoreModule.forRoot({}, { metaReducers, initialState: {} }),
     EffectsModule.forRoot([ ]),
+	!environment.production ? StoreDevtoolsModule.instrument() : [],
     AppRoutingModule
   ],
   providers: [
