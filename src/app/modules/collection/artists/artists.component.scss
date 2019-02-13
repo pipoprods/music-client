@@ -15,6 +15,9 @@
 
     span.paginate-previous, span.paginate-next {
       cursor: pointer;
+      padding: 10px 10px 6px 10px;
+      border: 1px solid #dedede;
+      border-radius: 5px;
     }
 
     span.paginate-previous {
