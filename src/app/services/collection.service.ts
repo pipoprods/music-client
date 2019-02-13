@@ -33,4 +33,11 @@ export class CollectionService {
         { params: (count !== undefined && offset !== undefined) ? { count: count.toString(), offset: offset.toString() } : undefined }
       );
   }
+
+  public setAlbumCoverUrl(album: Album): Album {
+    if (album.cover) {
+      album.coverUrl = `${environment.api}/album/cover?path=${encodeURIComponent(album.cover)}`;
+    }
+    return album;
+  }
 }

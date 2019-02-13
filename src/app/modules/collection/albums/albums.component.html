@@ -6,6 +6,15 @@
   <h2>{{artist}}</h2>
   <div class="navigation" (click)="back();"><span class="button"><i class="material-icons">arrow_back</i>Back</span></div>
   <ul>
-    <li *ngFor="let album of albums"><span class="year">{{album.year}}</span><span class="name">{{album.name}}</span></li>
+    <li *ngFor="let album of albums">
+      <img *ngIf="album.cover !== undefined; else noCover" class="cover" src="{{album.coverUrl}}" />
+      <div class="info">
+        <span class="year">{{album.year}}</span><span class="name">{{album.name}}</span>
+      </div>
+    </li>
   </ul>
+</ng-template>
+
+<ng-template #noCover>
+  <img class="cover" src="assets/nocover.png" />
 </ng-template>

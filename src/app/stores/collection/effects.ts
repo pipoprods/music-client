@@ -35,6 +35,7 @@ export class CollectionEffects {
   @Effect()
   loadAlbums$ = this.actions$.ofType<LoadAlbumsAction>(CollectionActionTypes.LoadAlbums).pipe(
     switchMap((action) => this.collectionService.getAlbums(action.id)),
+    map(albums => albums.map(a => this.collectionService.setAlbumCoverUrl(a))),
     map(albums => new LoadedAlbumsAction(albums))
   );
 
